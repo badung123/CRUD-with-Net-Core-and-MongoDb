@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row col-ms-12" style="text-align:center">
+            <span style="font-size:50px;font-style:oblique">Thông tin người dùng</span>
+        </div>
+        <form id="form">
+            <div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin Name')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin Email')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label>DateOfBirth</label>
+                    <input type="date" name="dob" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin DateOfBirth')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" name="phone" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin Phone')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label>Math Score</label>
+                    <input type="number" name="math" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin MathScore')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label>Physics Score</label>
+                    <input type="number" name="phy" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin PhysicsScore')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label>Chemistry Score</label>
+                    <input type="number" name="che" class="form-control" required oninvalid="this.setCustomValidity('Cần nhập đủ thông tin ChemistryScore')" oninput="this.setCustomValidity('')">
+                </div>
+
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <script type="text/javascript">
+        const uri = 'api/user';
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            submit();           
+        });
+
+        function submit() {
+            var formEl = document.forms.form;
+            var formData = new FormData(formEl);
+            var data = {
+                "name": formData.get('name'),
+                "dateOfBirth":  formData.get('dob'),
+                "email":  formData.get('email'),
+                "phone":  formData.get('phone'),
+                "mathScore": parseInt(formData.get('math')),
+                "physicsScore": parseInt(formData.get('phy')),
+                "chemistryScore": parseInt(formData.get('che'))
+            };
+            $.ajax({
+                url: uri,
+                type: "POST", /* or type:"GET" or type:"PUT" */
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                success: function (result) {
+                    location.reload();
+                    alert("Thành công");
+                },
+                error: function (error) {
+                    alert("Lỗi");
+                }
+            });
+
+        }
+
+    </script>
+</body>
+</html>
