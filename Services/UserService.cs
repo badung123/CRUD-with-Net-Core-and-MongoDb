@@ -48,10 +48,18 @@ namespace UserApi.Services
             string userName = "lenam123";
             string password = "lenam123";
             string data = "&authUsername=" + WebUtility.UrlEncode(userName) + "&authPassword=" + WebUtility.UrlEncode(password);
+            //login with username,password
             var html = PostData(httpRequest, uri, data, "application/x-www-form-urlencoded; charset=UTF-8").ToString();
+
+            //get responce after login success
             var result_login = JsonConvert.DeserializeObject<Responce>(html);
+            //add Authorization
             httpRequest.Authorization = "Bearer " + result_login.payload.accessToken;
+
+            //get data by url api
             var responce = JsonConvert.DeserializeObject<Responce>(httpRequest.Get(url).ToString());
+
+            //get current balance
             var curbalance = long.Parse(responce.payload.curBalance.ToString());
             return curbalance;
         }
@@ -63,7 +71,7 @@ namespace UserApi.Services
             public dynamic errorDetail { get; set; }
             public dynamic payload { get; set; }
         }
-        static string PostData(HttpRequest http, string url, string data = null, string contentType = null, string userArgent = "", string cookie = null)
+        private string PostData(HttpRequest http, string url, string data = null, string contentType = null, string userArgent = "", string cookie = null)
         {
             if (http == null)
             {
@@ -84,7 +92,7 @@ namespace UserApi.Services
             string html = http.Post(url, data, contentType).ToString();
             return html;
         }
-        static void AddCookie(HttpRequest http, string cookie)
+        private void AddCookie(HttpRequest http, string cookie)
         {
             var temp = cookie.Split(';');
             foreach (var item in temp)
