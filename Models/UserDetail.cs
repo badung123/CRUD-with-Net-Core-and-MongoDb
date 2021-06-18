@@ -26,23 +26,31 @@ namespace UserApi.Models
         public ObjectId Id { get; set; }
 
         [BsonElement]
+        [BsonRequired]
         public string Name { get; set; }
 
         [BsonElement]
+        [BsonRequired]
+        [BsonDateTimeOptions]
         public DateTime DateOfBirth { get; set; }
 
         [BsonElement]
+        [BsonRequired]
         public string Email { get; set; }
 
         [BsonElement]
+        [BsonRequired]
         public string Phone { get; set; }
         [BsonElement]
+        [BsonRequired]
         public double MathScore { get; set; }
         [BsonElement]
+        [BsonRequired]
         public double PhysicsScore { get; set; }
         [BsonElement]
         public double ChemistryScore { get; set; }
         [BsonElement]
+        [BsonRequired]
         public double MediumScore
         {
             get

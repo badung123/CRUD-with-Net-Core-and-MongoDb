@@ -121,3 +121,4 @@ E:\UserApi\UserApi\UserApi\obj\Release\netcoreapp3.1\staticwebassets\UserApi.Sta
 E:\UserApi\UserApi\UserApi\obj\Release\netcoreapp3.1\UserApi.dll
 E:\UserApi\UserApi\UserApi\obj\Release\netcoreapp3.1\UserApi.pdb
 E:\UserApi\UserApi\UserApi\obj\Release\netcoreapp3.1\UserApi.genruntimeconfig.cache
+E:\UserApi\UserApi\UserApi\bin\Release\netcoreapp3.1\xNet.dll

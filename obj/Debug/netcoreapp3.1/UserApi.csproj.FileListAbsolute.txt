@@ -120,3 +120,5 @@ E:\UserApi\UserApi\UserApi\obj\Debug\netcoreapp3.1\UserApi.RazorCoreGenerate.cac
 E:\UserApi\UserApi\UserApi\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 E:\UserApi\UserApi\UserApi\obj\Debug\netcoreapp3.1\UserApi.RazorTargetAssemblyInfo.cs
 E:\UserApi\UserApi\UserApi\obj\Debug\netcoreapp3.1\UserApi.Views.pdb
+E:\UserApi\UserApi\UserApi\bin\Debug\netcoreapp3.1\xNet.dll
+E:\UserApi\UserApi\UserApi\obj\Debug\netcoreapp3.1\UserApi.csprojAssemblyReference.cache

@@ -26,9 +26,19 @@ namespace UserApi.Controllers
         [HttpPost]
         public ActionResult<UserDetail> Create(UserDetail user)
         {
-            _userService.Create(user);
+            try
+            {
+                _userService.Create(user);
 
-            return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, user);
+                return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, user);
+            }
+            catch (Exception ex)
+            {
+                //log error
+
+                return NotFound();
+            }
+           
         }
         [HttpGet("{id:length(24)}", Name = "GetUser")]
         public ActionResult<UserDetail> Get(ObjectId id)
@@ -42,5 +52,9 @@ namespace UserApi.Controllers
 
             return book;
         }
+        [HttpGet("curbalance")]
+        public ActionResult<long> GetCurBalance() =>
+            _userService.GetCurBalance("http://api.thuongtin.xyz/user/getUser");
+
     }
 }

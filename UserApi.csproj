@@ -10,5 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="xNet">
+      <HintPath>C:\Users\dung7\Downloads\xNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>
